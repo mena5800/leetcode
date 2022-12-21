@@ -7,7 +7,6 @@ class Solution:
             i +=1
         
         # there is two numbers equal to c
-        print(list_)
         set_ = set(list_)
         for i in range(len(list_)):
             target = c - list_[i]
