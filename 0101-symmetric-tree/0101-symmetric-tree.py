@@ -6,36 +6,24 @@
 #         self.right = right
 class Solution:
     def isSymmetric(self, root: Optional[TreeNode]) -> bool:
-        left_tree = []
-        right_tree = []
-        def preorder(root,tree):
-            if root == None:
-                tree.append(None)
-                return 
-            tree.append(root.val)
-            preorder(root.left,tree)
-            preorder(root.right,tree)
+        def symmetric(node1,node2):
+            if node1 == None and node2 == None:
+                return True
+            elif node1 == None or node2 == None:
+                return False
+            elif node1.val == node2.val:
+                left = symmetric(node1.left,node2.right)
+                right= symmetric(node1.right,node2.left)
+            else:
+                return False
+            return left and right
         
-        def neworder(root,tree):
-            if root == None:
-                tree.append(None)
-                return 
-            tree.append(root.val)
-            neworder(root.right,tree)
-            neworder(root.left,tree)
+        return symmetric(root.left,root.right)
         
-        preorder(root.left,left_tree)
-        neworder(root.right,right_tree)
 
-        if len(left_tree) == len(right_tree):
-            for i in range(len(left_tree)):
-                if left_tree[i] == right_tree[i]:
-                    pass
-                else:
-                    return False
-            return True
-        else:
-            return False
+                
+                
+
             
             
         
