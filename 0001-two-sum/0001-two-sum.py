@@ -5,5 +5,3 @@ class Solution:
             num = target - nums[i]
             if num in set_nums and i != nums.index(num):
                 return [i,nums.index(num)]
-
-            
