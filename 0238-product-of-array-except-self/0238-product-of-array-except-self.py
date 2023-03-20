@@ -4,11 +4,12 @@ class Solution:
         postfix = [nums[0]] * len(nums)
         prefix = [nums[-1]] * len(nums)
         
+        j = len(nums)-2
         for i in range(1,len(nums)):
             postfix[i] = nums[i] * postfix[i-1]
-            
-        for i in range(len(nums)-2,-1,-1):
-            prefix[i] = nums[i] * prefix[i+1]
+            prefix[j] = nums[j] * prefix[j+1]
+            j -= 1
+                        
         
         for i in range(len(nums)):
             if i == 0:
